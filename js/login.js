@@ -4,33 +4,53 @@
   ns.gitToken = '';
   ns.userInfo = {};
 
-  // event handler for login
+// function to retrieve user data
+  function getUserData (token, callback){
 
-  $('#loginForm').on('submit', function (event){
-    event.preventDefault();
-    ns.gitToken = $('#loginInput').val();
+    // Ajax call to retrieve profile data, in success data put in object
 
-// Ajax call to retrieve profile data, in success data put in object
 
     $.ajax({
       type: 'GET',
       url: 'https://api.github.com/user',
       dataype: 'json',
       headers: {
-          authorization: 'token ' + ns.gitToken
-        },
+        authorization: 'token ' + token
+      },
       success: function userData (data){
-      ns.userInfo.Username = data.login;
-      ns.userInfo.Name = data.name;
-      ns.userInfo.Repos = data.public_repos;
-      ns.userInfo.Followers = data.followers;
-      ns.userInfo.Created = data.created_at;
+        ns.gitToken = token;
+        ns.userInfo.Username = data.login;
+        ns.userInfo.Name = data.name;
+        ns.userInfo.Repos = data.public_repos;
+        ns.userInfo.Followers = data.followers;
+        ns.userInfo.Created = data.created_at;
 
-      console.log(ns.userInfo);
-      // {Username: data.login, Name: data.name, Repos: data.public_repos, Followers: data.followers, Account created: data.created_at};
+        console.log(ns.userInfo);
 
-    }
+        callback(ns.userInfo);
+
+      },
+      error: function loginError (xhr){
+        console.error(xhr);
+        callback(null);
+      }
+
     });
+
+
+  }
+
+  // event handler for login
+
+  $('#loginForm').on('submit', function (event){
+    event.preventDefault();
+
+// calling function to get user data with login form input as argument, if works, store token in success
+    getUserData( $('#loginInput').val(), function loginCallback(data){
+        window.location.hash = '#profile';
+        $('nav').show();
+
+    } );
 
   });
   window.gitTracker = ns;
