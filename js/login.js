@@ -24,6 +24,8 @@
         ns.userInfo.Repos = data.public_repos;
         ns.userInfo.Followers = data.followers;
         ns.userInfo.Created = data.created_at;
+        ns.userInfo.avatar = data.avatar_url;
+        ns.userInfo.url = data.html_url;
 
         console.log(ns.userInfo);
 
@@ -45,7 +47,7 @@
   $('#loginForm').on('submit', function (event){
     event.preventDefault();
 
-// calling function to get user data with login form input as argument, if works, store token in success
+// calling function to get user data with login form input as argument, if works, store token in
     getUserData( $('#loginInput').val(), function loginCallback(data){
         window.location.hash = '#profile';
         $('nav').show();
