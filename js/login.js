@@ -19,15 +19,13 @@
       },
       success: function userData (data){
         ns.gitToken = token;
-        ns.userInfo.Username = data.login;
-        ns.userInfo.Name = data.name;
-        ns.userInfo.Repos = data.public_repos;
-        ns.userInfo.Followers = data.followers;
-        ns.userInfo.Created = data.created_at;
+        ns.userInfo.username = data.login;
+        ns.userInfo.name = data.name;
+        ns.userInfo.repos = data.public_repos;
+        ns.userInfo.followers = data.followers;
+        ns.userInfo.created = data.created_at.substr(0,10);
         ns.userInfo.avatar = data.avatar_url;
         ns.userInfo.url = data.html_url;
-
-        console.log(ns.userInfo);
 
         callback(ns.userInfo);
 
@@ -36,22 +34,17 @@
         console.error(xhr);
         callback(null);
       }
-
     });
-
-
   }
 
   // event handler for login
-
   $('#loginForm').on('submit', function (event){
     event.preventDefault();
 
 // calling function to get user data with login form input as argument, if works, store token in
-    getUserData( $('#loginInput').val(), function loginCallback(data){
+    getUserData( $('#loginInput').val(), function loginCallback(){
         window.location.hash = '#profile';
         $('nav').show();
-
     } );
 
   });

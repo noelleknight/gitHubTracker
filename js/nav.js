@@ -19,7 +19,6 @@
             window.location.hash = '#login';
         } else {
             // do stuff the view needs
-
             var viewName = window.location.hash.substr(1);
             if (ns[viewName] && ns[viewName].load) {
                 // ns['view-1'].load();
@@ -27,8 +26,6 @@
             }
         }
     }
-
-
     // navigate to a view when the page loads
     ns.init = function() {
         doNav();
