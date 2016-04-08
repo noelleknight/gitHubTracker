@@ -15,6 +15,7 @@
       success: function repoData (data){
         renderRepos(data);
         console.log('this works');
+// create function that loops and appends data properties to array for repo details, run it here so it pushes the data, store this array on namespace 
       }
     });
   };
