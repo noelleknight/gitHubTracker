@@ -15,7 +15,7 @@
       .append( $('<li>').text('Followers: ' + ns.userInfo.followers) )
       .append( $('<li>').text('Created: ' + ns.userInfo.created) );
 
-      console.log("i'm loading this profile view");  
+      console.log("i'm loading this profile view");
     };
 
     window.gitTracker = ns;

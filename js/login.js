@@ -38,6 +38,7 @@
   }
 
   // event handler for login
+
   $('#loginForm').on('submit', function (event){
     event.preventDefault();
 
