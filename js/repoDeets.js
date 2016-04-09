@@ -1,13 +1,28 @@
 (function(ns) {
   'use strict';
-  ns.repoDeets = {};
+  ns.repoDetails = {};
 
-  ns.repoDeets.load = function load (){
+  ns.repoDetails.load = function load (repoName){
 
-      console.log("this works");
+    // url: 'https://api.github.com/repos/' + ns.userInfo.username + '/' + repoName,  url to get repo details
+    $.ajax({
+      type: 'GET',
+      url: 'https://api.github.com/repos/' + ns.userInfo.username + '/' + repoName,
+      dataype: 'json',
+      headers: {
+        authorization: 'token ' + ns.gitToken
+      },      success: function getDetails (){
+                  detailsNav();
+            }
+
+    });
+    function detailsNav(){
+
+      $('.nav')
+        .append($('<li>')
+            .append($('<a>').attr('href','#repoDetails').text('Repo Details') ) );
+          }
+
   };
   window.gitTracker = ns;
 })(window.gitTracker || {});
-
-
-// run do nav function for this view on load - need to hide then display tab

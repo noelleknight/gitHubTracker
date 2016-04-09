@@ -14,8 +14,6 @@
       },
       success: function repoData (data){
         renderRepos(data);
-        console.log('this works');
-// create function that loops and appends data properties to array for repo details, run it here so it pushes the data, store this array on namespace 
       }
     });
   };
@@ -31,11 +29,10 @@
 
 // loop through repos and append some of that data to table
     repos.forEach( function repoNameItem(dataItem) {
-
       $('#repoTable')
         .append($('<tr>')
             .append($('<td>')
-                .append($('<a>').attr({href:'url', target: 'blank_'}).text(dataItem.name)))
+                .append($('<a>').attr({href: '#repoDetails-' + dataItem.name}).text(dataItem.name)))
         .append($ ('<td>').text(dataItem.stargazers_count) )
         .append($ ('<td>').text(dataItem.open_issues_count) )
       );

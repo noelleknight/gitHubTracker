@@ -1,7 +1,7 @@
 (function(ns) {
   'use strict';
 
-  ns.gitToken = '';
+  ns.gitToken = null;
   ns.userInfo = {};
 
 // function to retrieve user data
@@ -42,7 +42,6 @@
   $('#loginForm').on('submit', function (event){
     event.preventDefault();
 
-// calling function to get user data with login form input as argument, if works, store token in
     getUserData( $('#loginInput').val(), function loginCallback(){
         window.location.hash = '#profile';
         $('nav').show();

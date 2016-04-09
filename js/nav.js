@@ -8,21 +8,22 @@
 
     function doNav() {
         $('.view').hide();
-        var newView = $( window.location.hash ).show();
+        $( window.location.hash ).show();
 
         $('nav li').removeClass('active');
 
         $('nav a[href="' + window.location.hash + '"]').closest('li').addClass('active');
 
-        if (newView.length === 0) {
+        if (!ns.gitToken) {
             // if they try to load a bad view, default to profile!
             window.location.hash = '#login';
         } else {
             // do stuff the view needs
-            var viewName = window.location.hash.substr(1);
-            if (ns[viewName] && ns[viewName].load) {
+            var viewName = window.location.hash.substr(1).split(/-(.*)?/);
+            console.log(viewName);
+            if (ns[viewName[0]] && ns[viewName[0]].load) {
                 // ns['view-1'].load();
-                ns[ viewName ].load();
+                ns[ viewName[0] ].load(viewName[1]);
             }
         }
     }
