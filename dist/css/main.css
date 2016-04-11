@@ -1,0 +1,17 @@
+nav, section {
+  display: none; }
+
+#profileList, #detailList {
+  list-style: none; }
+  #profileList li, #detailList li {
+    margin: 10px;
+    font-size: 1.3em; }
+
+#login {
+  margin-top: 5%;
+  margin-left: 5%; }
+  #login input {
+    margin: 10px;
+    font-size: 1.2em; }
+
+/*# sourceMappingURL=main.css.map */

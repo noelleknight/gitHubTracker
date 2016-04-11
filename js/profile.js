@@ -4,7 +4,8 @@
 
   ns.profile.load = function load (){
     console.log(ns.userInfo);
-
+    $('#liRDs').hide();
+    
   $('#profileList')
       .empty()
       .append($('<img>').attr('src', ns.userInfo.avatar) )

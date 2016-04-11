@@ -14,8 +14,13 @@
       },
       success: function repoData (data){
         renderRepos(data);
+        $('#liRDs').hide();
       }
     });
+  };
+
+  ns.isEven = function isEven (number) {
+    return number;
   };
 
   function renderRepos (repos){
@@ -35,6 +40,7 @@
                 .append($('<a>').attr({href: '#repoDetails-' + dataItem.name}).text(dataItem.name)))
         .append($ ('<td>').text(dataItem.stargazers_count) )
         .append($ ('<td>').text(dataItem.open_issues_count) )
+
       );
   });
 }

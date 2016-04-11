@@ -1,1 +1,25 @@
-nav,section {display: none;}
+nav, section {
+  display: none;
+}
+
+#profileList, #detailList {
+    list-style: none;
+    
+    li {
+    margin: 10px;
+    font-size: 1.3em;
+
+    }
+}
+
+#login {
+  margin-top: 5%;
+  margin-left: 5%;
+
+  input {
+    // padding: 10px;
+    margin: 10px;
+    font-size: 1.2em;
+  }
+
+}
